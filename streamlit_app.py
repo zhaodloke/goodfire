@@ -55,7 +55,7 @@ def generate_response(prompt: str) -> str:
             max_completion_tokens=500,
         ):
             reply += chunk.choices[0].delta.content
-        return reply 
+        return ("main", reply) 
 
     except Exception:
         # Fallback: inject RAG data into a strong system prompt
@@ -81,11 +81,11 @@ def generate_response(prompt: str) -> str:
             max_completion_tokens=500,
         ):
             full_reply += chunk.choices[0].delta.content
-        return full_reply 
+        return ("fallback", full_reply) 
 
 # ── Streamlit UI ──
 st.set_page_config(
-    page_title="🕵️‍♂️ My two fav things",
+    page_title="🕵️‍♂️Two things about me",
     layout="wide",
 )
 st.title("🏓Table Tennis Coach")
@@ -93,5 +93,9 @@ st.title("🏓Table Tennis Coach")
 prompt = st.text_input("Ask me anything about table tennis :)", "")
 if prompt:
     with st.spinner("Thinking…"):
-        ai_reply = generate_response(prompt)
+        reply_type, ai_reply = generate_response(prompt)
+        if reply_type == "main":
+          st.subheader("Try to ask a question that's on topic with my expertise!", divider = "red")
+        else: 
+          st.subheader("Excellent query! Here's a fun fact to go with it ;)", divider = "green")
         st.write(ai_reply)
