@@ -1,9 +1,3 @@
-# ── patch event loop ──
-import asyncio, nest_asyncio
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-nest_asyncio.apply()
-
 # ──────────────────────────────────────────────────────────
 
 import os
