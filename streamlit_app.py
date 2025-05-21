@@ -1,4 +1,3 @@
-%%writefile app.py
 # ── patch event loop ──
 import asyncio, nest_asyncio
 loop = asyncio.new_event_loop()
