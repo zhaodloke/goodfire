@@ -1,3 +1,10 @@
+import asyncio
+import nest_asyncio
+
+# Create a new loop and install the nest_asyncio patch
+asyncio.set_event_loop(asyncio.new_event_loop())
+nest_asyncio.apply()
+
 # ──────────────────────────────────────────────────────────
 
 import os
