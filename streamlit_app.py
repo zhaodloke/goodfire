@@ -85,7 +85,7 @@ def generate_response(prompt: str) -> str:
 
 # ── Streamlit UI ──
 st.set_page_config(
-    page_title="🕵️‍♂️ Squeaky Clean Chat - Singapore Approved",
+    page_title="🕵️‍♂️ My two fav things",
     layout="wide",
 )
 st.title("🏓Table Tennis Coach")
